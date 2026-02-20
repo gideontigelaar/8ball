@@ -1,15 +1,18 @@
 let cnv;
 let aspectRatio = 16/9;
-let oldWidth, oldHeight
 const margin = convertRemToPixels(8);
+let container = document.getElementById("main");
 
 function setup() 
 {
     cnv = createCanvas((windowHeight - margin) * aspectRatio, windowHeight - margin);
-    cnv.position((windowWidth - width)/2,(windowHeight - height)/2)
-    oldWidth = windowWidth
-    oldHeight = windowHeight
+    cnv.parent("canvas")
+    cnv.position((windowWidth - width)/2,(windowHeight - height)/2, "inherit")
+
+    container.width = (windowHeight - margin) * aspectRatio;
+    container.height = windowHeight - margin;
 }
+
 function draw() 
 {
     background(220);
@@ -43,10 +46,10 @@ function windowResized()
     }
 
     resizeCanvas(canvasWidth, canvasHeight);
-    cnv.position((windowWidth - width)/2,(windowHeight - height)/2)
+    cnv.position((windowWidth - width)/2,(windowHeight - height)/2, "static")
 
-    oldWidth = newSizeX;
-    oldHeight = newSizeY;
+    container.width = canvasWidth;
+    container.height = canvasHeight;    
 }
 
 // Source - https://stackoverflow.com/a/42769683

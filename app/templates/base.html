@@ -37,8 +37,11 @@
         </nav>
     </header>
 
-    <main class="container my-5">
-        {% block content %}{% endblock %}
+    <main id="main" class="container-fluid my-5">
+        <div id="canvas" class="d-flex justify-content-center">
+            {% block content %}{% endblock %}
+            {% block javascript %}{% endblock %}
+        </div>
     </main>
 
     <footer class="bg-body-secondary py-3">
